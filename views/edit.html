@@ -8,10 +8,16 @@
     </div>
 
     <div class="form-group">
+        <label for="auteur">Auteur</label>
+        <input type="text" name="auteur" class="form-control" placeholder="{{article.author}}" required>
+    </div>
+
+
+    <div class="form-group">
         <label for="contenu">Contenu de l'article</label>
-        <textarea name="contenu" class="form-control" placeholder="contenu de l'article" rows="3" required></textarea>
+        <textarea name="contenu" class="form-control" placeholder="{{article.content}}" rows="3" required></textarea>
     </div> 
- <button type="submit" class="btn btn-default">Modifier</button>
+ <button type="submit" class="btn btn-success">Modifier</button>
     
 </form>
 

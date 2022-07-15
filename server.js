@@ -40,9 +40,9 @@ app.set('views',__dirname+'/views');
 //var  Article = mongoose.model('Article', {title: String, content: String, updated: Date});
 
 //Routes
-var  Article = mongoose.model('Article', {title: String, content: String, updated: Date});
+var  Article = mongoose.model('Article', {title: String, author: String, content: String, updated: Date});
 app.get('/', function(req, res){  
-      Article.find({}).sort({updated: 1}).exec(function(err, articles){
+      Article.find({}).sort({updated: -1}).exec(function(err, articles){
         if(err){throw err;}
         data = {title: 'Mon super blog', articles: articles};
         res.render('index', data);
@@ -58,7 +58,7 @@ app.get('/article/:id', function(req, res){
 });
 app.post('/update/:id', function(req, res){
 Article.update({_id : req.params.id},{
-  title: req.body.titre, content: req.body.contenu, updated: new Date()
+  title: req.body.titre, author: req.body.auteur, content: req.body.contenu, updated: new Date()
 },
 function(err){
 if(err){throw err;}
@@ -92,6 +92,7 @@ app.post('/store', function(req, res){
   var article = new Article ({
     title: req.body.titre,
     content: req.body.contenu,
+    author: req.body.auteur,
     updated: new Date()
 
   });
