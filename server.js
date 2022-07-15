@@ -76,7 +76,7 @@ app.get('/edit/:id', function(req, res){
 });
 
 app.get('/destroy/:id', function(req, res){
-  Article.remove({_id : req.params.id}, function(err){
+  Article.deleteOne({_id : req.params.id}, function(err){
     if(err){throw err;}
     res.redirect('/');
   });
